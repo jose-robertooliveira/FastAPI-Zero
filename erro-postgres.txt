@@ -1,0 +1,15 @@
+"""
+  Lembrete de erro com o postgres no docker.
+  connection to server at #"127.0.0.1"#, port 5432 failed: Connection refused sugere que a aplicação 
+  FastAPI está tentando se conectar ao PostgreSQL no endereço 127.0.0.1 (localhost) dentro do container, 
+  mas o banco de dados não está rodando nessa mesma rede local.
+  DATABASE_URL para usar o nome do serviço database_db ao invés de 127.0.0.1:
+  DATABASE_URL=postgresql+psycopg://app_user:secret@127.0.0.1:5432/database_db, isso para,
+  o banco fora fora do conatiner.
+"""
+
+"""Quando você usa docker-compose, cada serviço roda em um container separado, e para 
+  que a aplicação FastAPI se conecte ao banco de dados, você precisa usar o nome do serviço 
+  definido no docker-compose.yml como host. Neste caso, o serviço do banco de dados é chamado de
+  database_db.
+"""
