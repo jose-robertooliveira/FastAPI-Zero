@@ -14,10 +14,8 @@ from fast_demo.database import get_session
 from fast_demo.models import User
 from fast_demo.settings import Settings
 
-pwd_context = PasswordHash.recommended()
 settings = Settings()
-
-# pwd_context = PasswordHash.recommended()
+pwd_context = PasswordHash.recommended()
 
 
 def create_access_token(data: dict) -> dict:

@@ -9,7 +9,7 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       ALGORITHM: ${{ secrets.ALGORITHM }}
-      ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+      #ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
 
     steps:
       - name: Copy files from repo
@@ -28,11 +28,3 @@ jobs:
 
       - name: Run tests
         run: poetry run task test
-
-
-      - name: Export Environment Variables
-        run: |
-          export DATABASE_URL=${{ secrets.DATABASE_URL }}
-          export SECRET_KEY=${{ secrets.SECRET_KEY }}
-          export ALGORITHM=${{ secrets.ALGORITHM }}
-          export ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
