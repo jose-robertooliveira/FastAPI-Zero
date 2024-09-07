@@ -1,8 +1,3 @@
-"""
-Por convenção fixtures devem ficar no arquivo conftest, isso é
-uma boa prática.
-"""
-
 import factory
 import factory.fuzzy
 import pytest
@@ -125,3 +120,7 @@ def token(client, user):
 #             yield session
 
 #         table_registry.metadata.drop_all(engine)
+"""
+Por convenção fixtures devem ficar no arquivo conftest, isso é
+uma boa prática.
+"""
