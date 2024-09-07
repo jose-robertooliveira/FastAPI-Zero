@@ -28,3 +28,11 @@ jobs:
 
       - name: Run tests
         run: poetry run task test
+
+
+    - name: Export Environment Variables
+      run: |
+        export DATABASE_URL=${{ secrets.DATABASE_URL }}
+        export SECRET_KEY=${{ secrets.SECRET_KEY }}
+        export ALGORITHM=${{ secrets.ALGORITHM }}
+        export ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
