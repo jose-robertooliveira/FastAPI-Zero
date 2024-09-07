@@ -20,6 +20,17 @@ jobs:
       - name: Install Dependencies
         run: poetry install
 
+      - name: Debug Environment Variables
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}"
+          echo "ALGORITHM=${{ secrets.ALGORITHM }}"
+          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}"
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ALGORITHM: ${{ secrets.ALGORITHM }}
+          ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+
       - name: Run tests
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -27,3 +38,36 @@ jobs:
           ALGORITHM: ${{ secrets.ALGORITHM }}
           ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
         run: poetry run task test
+
+
+
+
+# name: Pipeline
+# on: [push, pull_request]
+
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Copy files from repo
+#         uses: actions/checkout@v3
+
+#       - name: Install Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.12'
+      
+#       - name: Install Poetry
+#         run: pip install poetry
+
+#       - name: Install Dependencies
+#         run: poetry install
+
+#       - name: Run tests
+#         env:
+#           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+#           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+#           ALGORITHM: ${{ secrets.ALGORITHM }}
+#           ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+#         run: poetry run task test
